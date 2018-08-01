@@ -7,7 +7,7 @@ import BudgetScreen from './screens/BudgetScreen';
 export default class App extends React.Component {
   render() {
     return (
-      <BudgetScreen/>
+      <BudgetScreen style={styles.container} />
     );
   }
 }
