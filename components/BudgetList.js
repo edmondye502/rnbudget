@@ -9,7 +9,6 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 class BudgetList extends Component {
 
 
-
 	renderBudget = ({item}) => (
 		<Text style={styles.textStyle}>
 			{item.desc} {item.price}
@@ -17,7 +16,6 @@ class BudgetList extends Component {
 	);
 
 	renderItem = ({item}) => (
-
 		<View style={styles.viewStyle}>
 			<Header
 			  centerComponent={{ text: item.date, style: styles.headerStyle }}
@@ -46,7 +44,7 @@ class BudgetList extends Component {
 			  pagingEnabled
 			  getItemLayout={this.getItemLayout}
 			  initialScrollIndex={1}
-
+			  ref={(ref) => {this.flatListRef = ref;}}
 			/>
 		);
 	}
@@ -67,8 +65,7 @@ const styles = {
 	},
 	headerStyle: {
 		color: '#fff',
-		color: 'black',
-		textAlign: 'center',
+		fontSize: 25,
 	},
 	buttonStyle: {
 		backgroundColor: '#0288D1',
