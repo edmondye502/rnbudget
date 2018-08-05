@@ -4,6 +4,8 @@ import { Header, Card, List, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import BudgetList from '../components/BudgetList';
+import SheetPicker from '../components/SheetPicker';
+import SheetP from '../components/SheetP';
 
 // temp data passed to page component
 const BUDGET_DATA = [
@@ -27,7 +29,7 @@ class BudgetScreen extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props.sheets.length);
+		console.log(this.props.sheets);
 		if(this.props.sheets.length <= 0) {
 			this.props.navigation.navigate('add');
 		}
@@ -38,7 +40,8 @@ class BudgetScreen extends Component {
 		return (
 			<View>
 				<Header
-				  centerComponent={{ text: 'Sheet Name', style: { color: '#fff' } }}
+				  //centerComponent={<SheetPicker />}
+				  centerComponent={<SheetP />}
 				  leftComponent={{ icon: 'add', color: '#fff', onPress: this.onAddSheetPress }}
 				/>
 				<Text>Budget Screen</Text>
