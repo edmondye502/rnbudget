@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, Dimensions } from 'react-native';
 import { Header, Card, List, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { AppLoading } from 'expo';
 
-import BudgetList from '../components/BudgetList';
 import SheetPicker from '../components/SheetPicker';
-import SheetP from '../components/SheetP';
 
 // temp data passed to page component
 const BUDGET_DATA = [
@@ -23,7 +22,6 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class BudgetScreen extends Component {
 
-
   onAddSheetPress = () => {
 		this.props.navigation.navigate('add');
 	}
@@ -32,7 +30,6 @@ class BudgetScreen extends Component {
 		if(this.props.sheets.length <= 0) {
 			this.props.navigation.navigate('add');
 		}
-
 	}
 
 	render() {
@@ -40,37 +37,20 @@ class BudgetScreen extends Component {
 			<View>
 				<Header
 				  //centerComponent={<SheetPicker />}
-				  centerComponent={<SheetP />}
+				  centerComponent={{ text: this.props.currentSheet.name, style: { color: '#fff' } }}
 				  leftComponent={{ icon: 'add', color: '#fff', onPress: this.onAddSheetPress }}
 				/>
 				<Text>Budget Screen</Text>
 			</View>
-		)	
+		)
 	}
-
 }
 
-const styles = {
-	textStyle: {
-		color: 'black',
-		textAlign: 'center',
-		marginBottom: 15
-	},
-	viewStyle: {
-		flex: 1,
-		width: SCREEN_WIDTH,
-	},
-	headerStyle: {
-		color: '#fff',
-		fontSize: 25,
-	},
-	buttonStyle: {
-		backgroundColor: '#0288D1',
-	}
-};
-
 function mapStateToProps(state) {
-	return { sheets: state.sheets };
+	return { 
+		sheets: state.sheets,
+		currentSheet: state.currentSheet
+	};
 }
 
 export default connect(mapStateToProps)(BudgetScreen);

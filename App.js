@@ -7,12 +7,14 @@ import store from './store';
 
 import BudgetScreen from './screens/BudgetScreen';
 import AddSheetScreen from './screens/AddSheetScreen';
+//import SettingScreen from './screens/SettingScreen';
 
 export default class App extends React.Component {
   render() {
   	const MainNavigator = createStackNavigator({
     	budget:  { screen: BudgetScreen },
-  		add: { screen: AddSheetScreen }
+  		add: { screen: AddSheetScreen },
+  		//setting: { screen: SettingScreen }
     },
     {
 	    headerMode: 'none',

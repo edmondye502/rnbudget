@@ -14,16 +14,14 @@ class AddSheetScreen extends Component {
 	}
 
 	onAddButtonPress = () => {
-		console.log(this.props.sheets);
-
 		const sheet = {
 			id: TEMP_ID,
-			name: this.props.newSheetName,
+			name: this.props.newSheet.sheetName,
 		};
 		TEMP_ID++;
 
+		this.props.setCurrentSheet(sheet);
 		this.props.sheetAdd(sheet, () => {
-			// navigate to budget
 			this.props.navigation.navigate('budget');
 		});
 	}
@@ -93,7 +91,7 @@ const styles = {
 function mapStateToProps(state) {
 	return { 
 		sheets: state.sheets,
-		newSheetName: state.newSheetName
+		newSheet: state.newSheet
 	};
 }
 
