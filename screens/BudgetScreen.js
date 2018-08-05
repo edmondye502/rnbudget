@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, Dimensions } from 'react-native';
+import { Header, Card, List, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import BudgetList from '../components/BudgetList';
@@ -20,37 +21,46 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class BudgetScreen extends Component {
 
-	getDateCode() {
-		now = new Date();
-		month = now.getMonth()+1;
-		if (month < 10) {
-					month = "0" + month;
-			}
-		year = now.getFullYear().toString().substr(-2);
-		return month + year;
+
+  onAddSheetPress = () => {
+		this.props.navigation.navigate('add');
 	}
 
+	componentDidMount() {
+		console.log(this.props.sheets.length);
+		if(this.props.sheets.length <= 0) {
+			this.props.navigation.navigate('add');
+		}
+
+	}
 
 	render() {
 		return (
-			<BudgetList data={BUDGET_DATA} />
-		);
+			<View>
+				<Header
+				  centerComponent={{ text: 'Sheet Name', style: { color: '#fff' } }}
+				  leftComponent={{ icon: 'add', color: '#fff', onPress: this.onAddSheetPress }}
+				/>
+				<Text>Budget Screen</Text>
+			</View>
+		)	
 	}
 
 }
 
 const styles = {
 	textStyle: {
-		fontSize: 30,
 		color: 'black',
 		textAlign: 'center',
 		marginBottom: 15
 	},
 	viewStyle: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: SCREEN_WIDTH
+		width: SCREEN_WIDTH,
+	},
+	headerStyle: {
+		color: '#fff',
+		fontSize: 25,
 	},
 	buttonStyle: {
 		backgroundColor: '#0288D1',
@@ -58,7 +68,7 @@ const styles = {
 };
 
 function mapStateToProps(state) {
-	return { budgetList: state.budget };
+	return { sheets: state.sheets };
 }
 
 export default connect(mapStateToProps)(BudgetScreen);
