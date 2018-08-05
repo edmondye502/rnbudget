@@ -14,9 +14,11 @@ class AddSheetScreen extends Component {
 	}
 
 	onAddButtonPress = () => {
+		console.log(this.props.sheets);
+
 		const sheet = {
 			id: TEMP_ID,
-			name: this.props.sheetName
+			name: this.props.newSheetName,
 		};
 		TEMP_ID++;
 
@@ -89,7 +91,10 @@ const styles = {
 };
 
 function mapStateToProps(state) {
-	return { sheets: state.sheets };
+	return { 
+		sheets: state.sheets,
+		newSheetName: state.newSheetName
+	};
 }
 
 export default connect(mapStateToProps, actions)(AddSheetScreen);

@@ -29,7 +29,6 @@ class BudgetScreen extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props.sheets);
 		if(this.props.sheets.length <= 0) {
 			this.props.navigation.navigate('add');
 		}
