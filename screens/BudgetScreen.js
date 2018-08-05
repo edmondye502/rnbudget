@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, Dimensions } from 'react-native';
+import { connect } from 'react-redux';
 
 import BudgetList from '../components/BudgetList';
 
@@ -56,4 +57,8 @@ const styles = {
 	}
 };
 
-export default BudgetScreen;
+function mapStateToProps(state) {
+	return { budgetList: state.budget };
+}
+
+export default connect(mapStateToProps)(BudgetScreen);
