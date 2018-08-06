@@ -4,7 +4,7 @@ import { Header, Card, List, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { AppLoading } from 'expo';
 
-import SheetPicker from '../components/SheetPicker';
+import BudgetList from '../components/BudgetList';
 
 // temp data passed to page component
 const BUDGET_DATA = [
@@ -15,10 +15,6 @@ const BUDGET_DATA = [
 	{ date: '0918', 
 		data: [{desc: 'Gas', price: '37.00'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}]},
 ];
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-
 
 class BudgetScreen extends Component {
 
@@ -36,11 +32,10 @@ class BudgetScreen extends Component {
 		return (
 			<View>
 				<Header
-				  //centerComponent={<SheetPicker />}
 				  centerComponent={{ text: this.props.currentSheet.name, style: { color: '#fff' } }}
 				  leftComponent={{ icon: 'add', color: '#fff', onPress: this.onAddSheetPress }}
 				/>
-				<Text>Budget Screen</Text>
+				<BudgetList />
 			</View>
 		)
 	}

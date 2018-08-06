@@ -69,10 +69,6 @@ class AddSheetScreen extends Component {
 }
 
 const styles = {
-	headerStyle: {
-		color: '#fff',
-		fontSize: 25,
-	},
 	inputStyle: {
 		margin: 20,
     height: 40,
