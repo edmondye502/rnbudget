@@ -22,7 +22,6 @@ class BudgetList extends Component {
 	}
 
 	renderBudgetList() {
-		console.log(this.props.budgets);
 		if(!this.props.budgets[this.props.currentSheet.id]) {
 			return <Text>Add new budget</Text>
 		}
@@ -70,9 +69,7 @@ class BudgetList extends Component {
 					</View>
 				</View>
 				<View style={styles.budgetListStyle}>
-					<ScrollView>
-						{this.renderBudgetList()}
-					</ScrollView>
+					{this.renderBudgetList()}
 				</View>
 
 				
@@ -90,7 +87,7 @@ const styles = {
 	},
 	budgetListStyle: {
 		width: SCREEN_WIDTH,
-		height: SCREEN_HEIGHT - 50
+		height: SCREEN_HEIGHT - 150
 	},
 	footerStyle: {
 		width: SCREEN_WIDTH,
