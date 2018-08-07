@@ -17,17 +17,18 @@ class BudgetList extends Component {
 			price: this.props.newBudget.budgetPrice
 		};
 
-		this.props.budgetAdd(budget);
+		this.props.budgetAdd(this.props.currentSheet.id, budget);
 		this.props.budgetClear();
 	}
 
 	renderBudgetList() {
-		if(!this.props.budgets) {
+		console.log(this.props.budgets);
+		if(!this.props.budgets[this.props.currentSheet.id]) {
 			return <Text>Add new budget</Text>
 		}
 		return (
 			<FlatList
-	      data={this.props.budgets}
+	      data={this.props.budgets[this.props.currentSheet.id]}
 	      renderItem={this.renderItem}
 	      keyExtractor={(item, index) => index}
 	    />
@@ -55,6 +56,7 @@ class BudgetList extends Component {
 						/>
 						<TextInput
 							autoCorrect={false}
+							keyboardType='numeric'
 							placeholder='Price'
 							style={styles.priceInputStyle}
 							value={this.props.budgetPrice}
@@ -102,7 +104,6 @@ const styles = {
 	},
 	buttonStyle: {
 		flex: 1,
-		paddingRight: 30,
 	},
 	formStyle: {
 		flex: 1,

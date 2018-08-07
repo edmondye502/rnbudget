@@ -6,9 +6,9 @@ import {
 } from './types';
 
 
-export const budgetAdd = (budget) => {
+export const budgetAdd = (sheet, budget) => {
 	return {
-		payload: budget,
+		payload: { sheet, budget },
 		type: BUDGET_ADD
 	};
 };
