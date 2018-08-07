@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, Dimensions } from 'react-native';
+import { View, Text, FlatList, Dimensions, Picker } from 'react-native';
 import { Header, Card, List, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { AppLoading } from 'expo';

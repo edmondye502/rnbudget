@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, FlatList, Dimensions, ScrollView } from 'react-native';
+import { View, Text, TextInput, FlatList, Dimensions, ScrollView, Keyboard } from 'react-native';
 import { List, ListItem, Button, Icon, Card } from 'react-native-elements'
 import { connect } from 'react-redux';
 
@@ -19,6 +19,7 @@ class BudgetList extends Component {
 
 		this.props.budgetAdd(this.props.currentSheet.id, budget);
 		this.props.budgetClear();
+		Keyboard.dismiss();
 	}
 
 	renderBudgetList() {
