@@ -21,6 +21,5 @@ export const budgetFormUpdate = ({prop, value}) => {
 };
 
 export const budgetClear = () => {
-	console.log('clear');
 	return { type: BUDGET_FORM_CLEAR };
 };

@@ -11,10 +11,6 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class BudgetList extends Component {
 
-	componentDidMount() {
-		this.props.budgetClear();
-	}
-	
 	onAddButtonPress() {
 		const budget = {
 			desc: this.props.newBudget.budgetDesc,
@@ -22,7 +18,7 @@ class BudgetList extends Component {
 		};
 
 		this.props.budgetAdd(budget);
-		
+		this.props.budgetClear();
 	}
 
 	renderBudgetList() {
