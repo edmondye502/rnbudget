@@ -30,7 +30,7 @@ class BudgetList extends Component {
 			<FlatList
 	      data={this.props.budgets[this.props.currentSheet.id]}
 	      renderItem={this.renderItem}
-	      keyExtractor={(item, index) => index}
+	      keyExtractor={(item, index) => index.toString()}
 	    />
 	  );
 	}
