@@ -2,15 +2,10 @@ import {
 	BUDGET_ADD
 } from '../actions/types';
 
-const INITIAL_STATE = {
-	description: '',
-	price: ''
-}
-
-export default function (state = INITIAL_STATE, action) {
+export default function (state = [], action) {
 	switch (action.type) {
 		case BUDGET_ADD:
-			return INITIAL_STATE;
+			return [action.payload, ...state];
 		default:
 			return state;
 	}

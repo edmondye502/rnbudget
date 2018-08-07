@@ -21,9 +21,7 @@ export default class App extends React.Component {
 	    navigationOptions: {
 	      headerVisible: false,
 	    }
-	  }
-    );
-
+	  });
 
     return (
     	<Provider store={store}>

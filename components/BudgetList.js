@@ -1,70 +1,127 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, FlatList } from 'react-native';
-import { List, ListItem, Button } from 'react-native-elements'
+import { View, Text, TextInput, FlatList, Dimensions, ScrollView } from 'react-native';
+import { List, ListItem, Button, Icon, Card } from 'react-native-elements'
 import { connect } from 'react-redux';
+
+import * as actions from '../actions'
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 
 class BudgetList extends Component {
 
-	renderBudgetList() {
-
+	componentDidMount() {
+		this.props.budgetClear();
 	}
+	
+	onAddButtonPress() {
+		const budget = {
+			desc: this.props.newBudget.budgetDesc,
+			price: this.props.newBudget.budgetPrice
+		};
+
+		this.props.budgetAdd(budget);
+		
+	}
+
+	renderBudgetList() {
+		if(!this.props.budgets) {
+			return <Text>Add new budget</Text>
+		}
+		return (
+			<FlatList
+	      data={this.props.budgets}
+	      renderItem={this.renderItem}
+	      keyExtractor={(item, index) => index}
+	    />
+	  );
+	}
+
+	renderItem = ({ item }) => (
+	  <ListItem
+	    title={item.desc}
+	    subtitle={item.price}
+	  />
+	)
 
 	render() {
 		return (
-			<View>
-			<View>
-				<FlatList
-				/>
-			</View>
 			<View style={styles.containerStyle}>
-				<TextInput
-					autoCorrect={true}
-					placeholder='Description'
-					style={styles.descInputStyle}
-					//value={this.props.sheetName}
-					//onChangeText={value => this.props.sheetFormUpdate({ prop: 'sheetName', value })}
-				/>
-				<TextInput
-					autoCorrect={true}
-					placeholder='Price'
-					style={styles.priceInputStyle}
-					//value={this.props.sheetName}
-					//onChangeText={value => this.props.sheetFormUpdate({ prop: 'sheetName', value })}
-				/>
-				<Button
-				  style={styles.buttonStyle}
-				  title='+'
-				  onPress={() => this.onAddButtonPress()}
-				/>
-			</View>
+				<View style={styles.footerStyle}>
+					<View style={styles.formStyle}>
+						<TextInput 
+							autoCorrect={false}
+							placeholder='Description'
+							style={styles.descInputStyle}
+							value={this.props.budgetDesc}
+							onChangeText={value => this.props.budgetFormUpdate({ prop: 'budgetDesc', value })}
+						/>
+						<TextInput
+							autoCorrect={false}
+							placeholder='Price'
+							style={styles.priceInputStyle}
+							value={this.props.budgetPrice}
+							onChangeText={value => this.props.budgetFormUpdate({ prop: 'budgetPrice', value })}
+						/>
+						<Icon
+						  style={styles.buttonStyle}
+						  name='add'
+						  onPress={() => this.onAddButtonPress()}
+						/>
+					</View>
+				</View>
+				<View style={styles.budgetListStyle}>
+					<ScrollView>
+						{this.renderBudgetList()}
+					</ScrollView>
+				</View>
+
+				
+				
+				
 			</View>
 		);
 	}
 }
 
 const styles = {
+	containerStyle: {
+		flex: 1,
+		justifyContent: 'space-between'
+	},
+	budgetListStyle: {
+		width: SCREEN_WIDTH,
+		height: SCREEN_HEIGHT - 50
+	},
+	footerStyle: {
+		width: SCREEN_WIDTH,
+		height: 50
+	},
 	descInputStyle: {
 		flex: 3,
-		margin: 20,
 	},
 	priceInputStyle: {
 		flex: 2,
-		margin: 20,
 	},
 	buttonStyle: {
-		flex: 1
+		flex: 1,
+		paddingRight: 30,
 	},
-	containerStyle: {
-		flexDirection: 'row'
-	},
+	formStyle: {
+		flex: 1,
+		flexDirection: 'row',
+		borderWidth: 0.5,
+    borderColor: '#d6d7da',
+	}
 };
 
 function mapStateToProps(state) {
 	return { 
 		currentSheet: state.currentSheet,
-		budgets: state.budgets
+		budgets: state.budgets,
+		newBudget: state.newBudget
 	};
 }
 
-export default connect(mapStateToProps)(BudgetList);
+export default connect(mapStateToProps, actions)(BudgetList);
