@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { AppLoading } from 'expo';
 
 import BudgetList from '../components/BudgetList';
+import BudgetHeader from '../components/BudgetHeader';
 
 // temp data passed to page component
 const BUDGET_DATA = [
@@ -31,9 +32,9 @@ class BudgetScreen extends Component {
 	render() {
 		return (
 			<View>
-				<Header
-				  centerComponent={{ text: this.props.currentSheet.name, style: { color: '#fff' } }}
-				  leftComponent={{ icon: 'add', color: '#fff', onPress: this.onAddSheetPress }}
+				
+				<BudgetHeader 
+					leftIconPress={this.onAddSheetPress}
 				/>
 				<BudgetList />
 			</View>
