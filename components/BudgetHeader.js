@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, FlatList, Dimensions, ScrollView, Keyboard } from 'react-native';
-import { List, ListItem, Button, Icon, Card } from 'react-native-elements'
+import { View, Text, Picker } from 'react-native';
+import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux';
 
 import * as actions from '../actions'
@@ -20,11 +20,19 @@ class BudgetHeader extends Component {
 		}
 	}
 
+	renderCenterComponent() {
+		if(this.props.centerComponent.type === 'text') {
+			return (
+					<Text style={styles.textStyle}>{this.props.centerComponent.text}</Text>
+			);
+		}
+	}
+
 	render() {
 		return (
 			<View style={styles.viewStyle}>
 				{this.renderLeftIcon()}
-				<Text style={styles.textStyle}>{this.props.centerText}</Text>
+				{this.renderCenterComponent()}
 			</View>
 		);
 	}

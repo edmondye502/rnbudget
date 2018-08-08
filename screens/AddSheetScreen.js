@@ -28,12 +28,18 @@ class AddSheetScreen extends Component {
 		});
 	}
 
+	renderHeaderComponent() {
+		return (
+			<Text>Add Budget Sheet</Text>
+		);
+	}
+
 	render() {
 		return (
 			<View>
 				<BudgetHeader 
 					leftIcon={{type: 'arrow-back', display: (this.props.sheets.length > 0), press: this.onBackPress}}
-					centerText={'Add Budget Sheet'}
+					centerComponent={{type: 'text', text: 'Add Budget Sheet'}}
 				/>
 				<Card>
 					<View style={styles.containerStyle}>
