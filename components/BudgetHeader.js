@@ -8,15 +8,23 @@ import * as actions from '../actions'
 
 class BudgetHeader extends Component {
 
+	renderLeftIcon() {
+		if(this.props.leftIcon.display) {
+			return (
+				<Icon
+				  name={this.props.leftIcon.type}
+				  style={styles.iconStyle}
+				  onPress={this.props.leftIcon.press} 
+				/>
+			);
+		}
+	}
+
 	render() {
 		return (
 			<View style={styles.viewStyle}>
-				<Icon
-				  name='add'
-				  style={styles.iconStyle}
-				  onPress={this.props.leftIconPress} 
-				/>
-				<Text style={styles.textStyle}>{this.props.currentSheet.name}</Text>
+				{this.renderLeftIcon()}
+				<Text style={styles.textStyle}>{this.props.centerText}</Text>
 			</View>
 		);
 	}

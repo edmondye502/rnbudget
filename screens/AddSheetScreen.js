@@ -3,6 +3,8 @@ import { View, Text, TextInput } from 'react-native';
 import { Header, Card, Button, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 
+import BudgetHeader from '../components/BudgetHeader';
+
 import * as actions from '../actions'
 
 var TEMP_ID = 1;
@@ -26,23 +28,12 @@ class AddSheetScreen extends Component {
 		});
 	}
 
-	renderBackButton() {
-		if(this.props.sheets.length > 0) {
-			return (
-				<Icon
-				  name='arrow-back'
-				  onPress={() => this.onBackPress()} 
-				/>
-			)
-		}
-	}
-
 	render() {
 		return (
 			<View>
-				<Header
-				  leftComponent={this.renderBackButton()}
-				  centerComponent={{ text: 'Add Budget Sheet', style: { color: '#fff' } }}
+				<BudgetHeader 
+					leftIcon={{type: 'arrow-back', display: (this.props.sheets.length > 0), press: this.onBackPress}}
+					centerText={'Add Budget Sheet'}
 				/>
 				<Card>
 					<View style={styles.containerStyle}>

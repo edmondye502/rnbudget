@@ -32,9 +32,9 @@ class BudgetScreen extends Component {
 	render() {
 		return (
 			<View>
-				
 				<BudgetHeader 
-					leftIconPress={this.onAddSheetPress}
+					leftIcon={{type: 'add', display: true, press: this.onAddSheetPress}}
+					centerText={this.props.currentSheet.name}
 				/>
 				<BudgetList />
 			</View>
