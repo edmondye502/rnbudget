@@ -18,6 +18,14 @@ A simple budget app developed with React Native
 
 To Add
 
+## To Do
+
+* Fix issue with text input not clearing
+* Add delete confirmation messages
+* Add redux persist to persist data
+* Add firebase for multiuser and better data storage
+
+
 ## Other Comments
 
 This project was created for me to practice React Native while also giving myself a customized budgeting tool
