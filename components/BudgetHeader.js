@@ -23,10 +23,10 @@ class BudgetHeader extends Component {
 	}
 
 	renderRightIcon() {
-		if(this.props.rightIcon && this.props.righttIcon.display) {
+		if(this.props.rightIcon && this.props.rightIcon.display) {
 			return (
 				<Icon
-				  name={this.props.righttIcon.type}
+				  name={this.props.rightIcon.type}
 				  style={styles.rightIconStyle}
 				  onPress={this.props.rightIcon.press} 
 				/>
@@ -63,6 +63,7 @@ const styles = {
 	viewStyle: {
 		backgroundColor: '#008080',
 		flexDirection: 'row',
+		justifyContent: 'space-between',
 		alignItems: 'center',
 		height: 75,
 		paddingTop: 15,
@@ -86,7 +87,7 @@ const styles = {
 		fontSize: 25
 	},
 	pickerStyle: {
-		//flex: 1,
+		flex: 1,
 	}
 };
 

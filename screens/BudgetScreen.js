@@ -13,6 +13,10 @@ class BudgetScreen extends Component {
 		this.props.navigation.navigate('add');
 	}
 
+	onDeleteSheetPress = () => {
+		console.log('delete sheet');
+	}
+
 	componentDidMount() {
 		if(this.props.sheets.length <= 0) {
 			this.props.navigation.navigate('add');
@@ -25,6 +29,7 @@ class BudgetScreen extends Component {
 				<BudgetHeader 
 					leftIcon={{type: 'add', display: true, press: this.onAddSheetPress}}
 					centerComponent={{type: 'picker'}}
+					rightIcon={{type: 'delete', display: true, press: this.onDeleteSheetPress}}
 				/>
 				<BudgetList />
 			</View>
