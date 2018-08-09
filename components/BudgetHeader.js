@@ -3,6 +3,8 @@ import { View, Text, Picker } from 'react-native';
 import { Icon } from 'react-native-elements'
 import { connect } from 'react-redux';
 
+import SheetPicker from '../components/SheetPicker';
+
 import * as actions from '../actions'
 
 
@@ -23,7 +25,12 @@ class BudgetHeader extends Component {
 	renderCenterComponent() {
 		if(this.props.centerComponent.type === 'text') {
 			return (
-					<Text style={styles.textStyle}>{this.props.centerComponent.text}</Text>
+				<Text style={styles.textStyle}>{this.props.centerComponent.text}</Text>
+			);
+		}
+		else if(this.props.centerComponent.type == 'picker') {
+			return (
+				<SheetPicker style={styles.pickerStyle}/>
 			);
 		}
 	}
@@ -60,6 +67,9 @@ const styles = {
 		flex: 1,
 		textAlign: 'center',
 		fontSize: 25
+	},
+	pickerStyle: {
+		flex: 1,
 	}
 };
 
