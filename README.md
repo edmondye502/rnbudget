@@ -18,7 +18,7 @@ A simple budget app developed with React Native
 
 To Add
 
-## To Do
+## To Do (in no particular order)
 
 * Fix issue with text input not clearing
 * Add delete confirmation messages

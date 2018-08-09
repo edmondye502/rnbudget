@@ -11,6 +11,10 @@ var TEMP_ID = 1;
 
 class AddSheetScreen extends Component {
 
+	componentDidMount() {
+		this.props.sheetFormClear();
+	}
+
 	onBackPress = () => {
 		this.props.navigation.navigate('budget');
 	}
@@ -34,6 +38,18 @@ class AddSheetScreen extends Component {
 		);
 	}
 
+	renderError() {
+		if (this.props.newSheet.error) {
+			return (
+				<View style={{ backgroundColor: 'white' }}>
+					<Text style={styles.errorTextStyle}>
+						{this.props.newSheet.error}
+					</Text>
+				</View>
+			);
+		}
+	}
+
 	render() {
 		return (
 			<View>
@@ -50,6 +66,7 @@ class AddSheetScreen extends Component {
 							value={this.props.sheetName}
 							onChangeText={value => this.props.sheetFormUpdate({ prop: 'sheetName', value })}
 						/>
+						{this.renderError()}
 						<Button
 						  raised
 						  icon={{name: 'add'}}
@@ -78,6 +95,12 @@ const styles = {
 	containerStyle: {
 		marginTop: 10,
 		marginBottom: 10,
+	},
+	errorTextStyle: {
+		fontSize: 20,
+		alignSelf: 'center',
+		marginBottom: 10,
+		color: 'red'
 	},
 };
 

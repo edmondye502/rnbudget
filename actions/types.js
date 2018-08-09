@@ -3,6 +3,7 @@ export const SHEET_DELETE = 'sheet_delete';
 
 export const SHEET_FORM_UPDATE = 'sheet_form_update';
 export const SHEET_FORM_CLEAR = 'sheet_form_clear';
+export const SHEET_FORM_ERROR = 'sheet_form_error';
 
 export const SET_CURRENT_SHEET = 'set_current_sheet';
 
