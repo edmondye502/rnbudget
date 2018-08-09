@@ -8,14 +8,17 @@ import * as actions from '../actions'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
+var TEMP_ID = 1;
 
 class BudgetList extends Component {
 
 	onAddButtonPress() {
 		const budget = {
+			id: TEMP_ID,
 			desc: this.props.newBudget.budgetDesc,
 			price: this.props.newBudget.budgetPrice
 		};
+		TEMP_ID++;
 
 		this.props.budgetAdd(this.props.currentSheet.id, budget);
 		this.props.budgetClear();
@@ -35,10 +38,25 @@ class BudgetList extends Component {
 	  );
 	}
 
+	onDeleteBudgetPress(item) {
+		this.props.budgetDelete(this.props.currentSheet.id, item);
+	}
+
+	renderRightIcon(item) {
+		return (
+			<Icon
+			  name='delete'
+			  color='#ff0000'
+			  onPress={() => this.onDeleteBudgetPress(item)} 
+			/>
+		);
+	}
+
 	renderItem = ({ item }) => (
 	  <ListItem
 	    title={item.desc}
-	    subtitle={item.price}
+	    subtitle={`$ ${item.price}`}
+	    rightIcon={this.renderRightIcon(item)}
 	  />
 	)
 

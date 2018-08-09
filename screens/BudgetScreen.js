@@ -7,16 +7,6 @@ import { AppLoading } from 'expo';
 import BudgetList from '../components/BudgetList';
 import BudgetHeader from '../components/BudgetHeader';
 
-// temp data passed to page component
-const BUDGET_DATA = [
-	{ date: '0718', 
-		data: [{desc: 'McDonalds', price: '9.99'}, {desc: 'KFC', price: '4.78'}]},
-	{ date: '0818', 
-		data: [{desc: 'Chipotle', price: '12.69'}, {desc: 'Shoes', price: '122.19'}, {desc: 'Poke', price: '14.59'}]},
-	{ date: '0918', 
-		data: [{desc: 'Gas', price: '37.00'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}, {desc: 'Amazon', price: '31.54'}]},
-];
-
 class BudgetScreen extends Component {
 
   onAddSheetPress = () => {
