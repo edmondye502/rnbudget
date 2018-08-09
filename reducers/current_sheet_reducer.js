@@ -3,7 +3,7 @@ import {
 } from '../actions/types';
 
 
-export default function (state = '', action) {
+export default function (state = {}, action) {
 	switch (action.type) {
 		case SET_CURRENT_SHEET:
 			return action.payload;

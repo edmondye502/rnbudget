@@ -29,8 +29,6 @@ class BudgetScreen extends Component {
 		}
 	}
 
-
-
 	render() {
 		return (
 			<View>
