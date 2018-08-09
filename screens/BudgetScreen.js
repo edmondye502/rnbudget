@@ -7,6 +7,8 @@ import { AppLoading } from 'expo';
 import BudgetList from '../components/BudgetList';
 import BudgetHeader from '../components/BudgetHeader';
 
+import * as actions from '../actions'
+
 class BudgetScreen extends Component {
 
   onAddSheetPress = () => {
@@ -14,7 +16,13 @@ class BudgetScreen extends Component {
 	}
 
 	onDeleteSheetPress = () => {
-		console.log('delete sheet');
+		this.props.sheetDelete(this.props.currentSheet);
+		if (this.props.sheets.length > 0) {
+			this.props.setCurrentSheet(this.props.sheets[0]);
+		}
+		else {
+			this.props.navigation.navigate('add');
+		}
 	}
 
 	componentDidMount() {
@@ -44,4 +52,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(BudgetScreen);
+export default connect(mapStateToProps, actions)(BudgetScreen);

@@ -2,7 +2,8 @@
 import {
 	SHEET_ADD,
 	SET_CURRENT_SHEET,
-	SHEET_FORM_UPDATE
+	SHEET_FORM_UPDATE,
+	SHEET_DELETE
 } from './types';
 
 
@@ -24,5 +25,12 @@ export const sheetFormUpdate = ({prop, value}) => {
 	return {
 		payload: { prop, value },
 		type: SHEET_FORM_UPDATE
+	};
+};
+
+export const sheetDelete = (sheet) => {
+	return {
+		payload: sheet,
+		type: SHEET_DELETE
 	};
 };

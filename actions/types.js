@@ -1,4 +1,5 @@
 export const SHEET_ADD = 'sheet_add';
+export const SHEET_DELETE = 'sheet_delete';
 
 export const SHEET_FORM_UPDATE = 'sheet_form_update';
 export const SHEET_FORM_CLEAR = 'sheet_form_clear';
