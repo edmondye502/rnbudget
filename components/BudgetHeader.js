@@ -11,12 +11,24 @@ import * as actions from '../actions'
 class BudgetHeader extends Component {
 
 	renderLeftIcon() {
-		if(this.props.leftIcon.display) {
+		if(this.props.leftIcon && this.props.leftIcon.display) {
 			return (
 				<Icon
 				  name={this.props.leftIcon.type}
-				  style={styles.iconStyle}
+				  style={styles.leftIconStyle}
 				  onPress={this.props.leftIcon.press} 
+				/>
+			);
+		}
+	}
+
+	renderRightIcon() {
+		if(this.props.rightIcon && this.props.righttIcon.display) {
+			return (
+				<Icon
+				  name={this.props.righttIcon.type}
+				  style={styles.rightIconStyle}
+				  onPress={this.props.rightIcon.press} 
 				/>
 			);
 		}
@@ -40,6 +52,7 @@ class BudgetHeader extends Component {
 			<View style={styles.viewStyle}>
 				{this.renderLeftIcon()}
 				{this.renderCenterComponent()}
+				{this.renderRightIcon()}
 			</View>
 		);
 	}
@@ -59,9 +72,13 @@ const styles = {
 		elevation: 2,
 		position: 'relative'
 	},
-	iconStyle: {
+	leftIconStyle: {
 		flex: 1,
 		textAlign: 'left',
+	},
+	rightIconStyle: {
+		flex: 1,
+		textAlign: 'right',
 	},
 	textStyle: {
 		flex: 1,
@@ -69,7 +86,7 @@ const styles = {
 		fontSize: 25
 	},
 	pickerStyle: {
-		flex: 1,
+		//flex: 1,
 	}
 };
 
