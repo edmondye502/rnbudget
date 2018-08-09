@@ -6,6 +6,7 @@ import { AppLoading } from 'expo';
 
 import BudgetList from '../components/BudgetList';
 import BudgetHeader from '../components/BudgetHeader';
+import SheetPicker from '../components/SheetPicker';
 
 // temp data passed to page component
 const BUDGET_DATA = [
@@ -38,6 +39,7 @@ class BudgetScreen extends Component {
 					leftIcon={{type: 'add', display: true, press: this.onAddSheetPress}}
 					centerComponent={{type: 'text', text: this.props.currentSheet.name}}
 				/>
+				<SheetPicker />
 				<BudgetList />
 			</View>
 		)
