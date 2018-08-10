@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'
 
-import store from './store';
+import { store, persistor } from './store';
 
 import BudgetScreen from './screens/BudgetScreen';
 import AddSheetScreen from './screens/AddSheetScreen';
@@ -25,7 +26,9 @@ export default class App extends React.Component {
 
     return (
     	<Provider store={store}>
-      	<MainNavigator style={styles.container} />
+    		<PersistGate loading={null} persistor={persistor}>
+      		<MainNavigator style={styles.container} />
+      	</PersistGate>
       </Provider>
     );
   }
