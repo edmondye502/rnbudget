@@ -1,6 +1,7 @@
 import {
 	BUDGET_ADD,
-	BUDGET_DELETE
+	BUDGET_DELETE,
+	BUDGET_CLEAR_AFTER_SHEET_DELETE
 } from '../actions/types';
 
 export default function (state = {}, action) {
@@ -16,6 +17,9 @@ export default function (state = {}, action) {
 			state[sheet].splice(removeIndex, 1);
 			const newBudgetList = (state[sheet].length == 0 ? undefined : state[sheet]);
 			return { ...state, [sheet]: newBudgetList };
+		case BUDGET_CLEAR_AFTER_SHEET_DELETE:
+			delete state[action.payload.id]; // DO NOT MUTATE STATE, need to update
+			return state;
 		default:
 			return state;
 	}

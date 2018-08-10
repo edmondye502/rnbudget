@@ -13,6 +13,7 @@ export default function (state = [], action) {
 				return s.id === action.payload.id;
 			});
 			state.splice(removeIndex, 1);
+			// DO NOT MUTATE STATE, needs updating
 			return state;
 		default:
 			return state;

@@ -17,6 +17,7 @@ class BudgetScreen extends Component {
 
 	onDeleteSheetPress = () => {
 		this.props.sheetDelete(this.props.currentSheet);
+		this.props.budgetClearAfterSheetDelete(this.props.currentSheet);
 		if (this.props.sheets.length > 0) {
 			this.props.setCurrentSheet(this.props.sheets[0]);
 		}

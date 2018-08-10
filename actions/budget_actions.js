@@ -3,7 +3,8 @@ import {
 	BUDGET_ADD,
 	BUDGET_FORM_UPDATE,
 	BUDGET_FORM_CLEAR,
-	BUDGET_DELETE
+	BUDGET_DELETE,
+	BUDGET_CLEAR_AFTER_SHEET_DELETE
 } from './types';
 
 
@@ -29,5 +30,12 @@ export const budgetDelete = (sheet, budget) => {
 	return {
 		payload: { sheet, budget },
 		type: BUDGET_DELETE
+	};
+};
+
+export const budgetClearAfterSheetDelete = (sheet) => {
+	return {
+		payload: sheet,
+		type: BUDGET_CLEAR_AFTER_SHEET_DELETE
 	};
 };
