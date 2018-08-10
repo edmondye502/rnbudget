@@ -21,7 +21,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.edmondye.budget"
+    },
+    "android": {
+      "package": "com.edmondye.budget"
     }
   }
 }
