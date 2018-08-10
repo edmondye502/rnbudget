@@ -20,9 +20,9 @@ To Add
 
 ## To Do (in no particular order)
 
+* Fix code to not mutate state in reducers
 * Fix issue with text input not clearing
 * Add delete confirmation messages
-* Add redux persist to persist data
 * Add firebase for multiuser and better data storage
 
 
